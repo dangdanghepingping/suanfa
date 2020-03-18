@@ -26,6 +26,29 @@
     var node1 = new Tree(3, leaf4, leaf5);
     var root = new Tree(1, node, node1);
     console.log(root);
+
+    // function shendu(tree, val) {
+    //   if (tree == null) return false;
+    //   if (tree.val == val) {
+    //     return true
+    //   } else {
+    //     // 断点作用.有真就真
+    //     return  shendu(tree.left, val) || shendu(tree.right, val);
+    //   }
+    // }
+    function guandu(nodeList, val) {
+      if (nodeList.length == 0) return false;
+      let list = [];
+      for (let i = 0; i < nodeList.length; i++) {
+        if (nodeList[i]) {
+          if(nodeList[i].val == val) return true;
+          list.push(nodeList[i].left);
+          list.push(nodeList[i].right);
+        }
+      }
+      return guandu(list, val)
+    }
+    console.log(guandu([root], 5)); 
   </script>
 </body>
 
