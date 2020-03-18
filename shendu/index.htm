@@ -41,6 +41,7 @@
       let list = [];
       for (let i = 0; i < nodeList.length; i++) {
         if (nodeList[i]) {
+          console.log(nodeList[i].val);
           if(nodeList[i].val == val) return true;
           list.push(nodeList[i].left);
           list.push(nodeList[i].right);
