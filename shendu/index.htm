@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Tree {
+      constructor(val, left = null, right = null) {
+        this.val = val;
+        this.left = left;
+        this.right = right
+      }
+    }
+
+    var leaf2 = new Tree(4)
+    var leaf3 = new Tree(5)
+    var leaf4 = new Tree(6)
+    var leaf5 = new Tree(7)
+    var node = new Tree(2, leaf2, leaf3)
+    var node1 = new Tree(3, leaf4, leaf5);
+    var root = new Tree(1, node, node1);
+    console.log(root);
+  </script>
+</body>
+
+</html>
