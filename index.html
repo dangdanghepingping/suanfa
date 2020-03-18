@@ -49,6 +49,84 @@
 
     // }
     // console.log(quick(arr)); 
+    // 二叉树
+    class Tree {
+      constructor(val, left = null, right = null) {
+        this.val = val;
+        this.left = left;
+        this.right = right
+      }
+    }
+
+    var leaf2 = new Tree(4)
+    var leaf3 = new Tree(5)
+    var leaf4 = new Tree(6)
+    var leaf5 = new Tree(7)
+    var node = new Tree(2, leaf2, leaf3)
+    var node1 = new Tree(3, leaf4, leaf5);
+    var root = new Tree(1, node, node1);
+    console.log(root);
+
+    // function bianli(root) {//qian序遍历
+    //   console.log(root.val);
+    //   if (root.left) {
+    //     bianli(root.left)
+    //   } if(root.right){
+    //     bianli(root.right)
+    //   }
+    // }
+    // bianli(root)
+
+
+    // function bianli2(root, arr) {//zhong序遍历
+    //   var arr = arr ? arr : [];
+    //   if (root.left) {
+    //     bianli2(root.left, arr);
+    //   }
+    //   arr.push(root.val)
+    //   if (root.right) {
+    //     bianli2(root.right, arr)
+    //   }
+    //   return arr;
+    // }
+    // var qian = bianli2(root);
+    // console.log(qian);
+    var zhong = [3, 2, 4, 1, 6, 5, 7]
+    function bianli3(root, arr) {//hou序遍历
+      var arr = arr ? arr : [];
+      if (root.left) {
+        bianli3(root.left, arr);
+      }
+      if (root.right) {
+        bianli3(root.right, arr)
+      }
+      arr.push(root.val)
+      return arr
+    }
+    // var hou = bianli3(root)
+    // console.log(hou);
+    var hou = [3, 4, 2, 6, 7, 5, 1]
+    function restore(hou, zhong) {
+      // debugger
+      if (hou == null || zhong == null || hou.length == 0 || zhong.length == 0) return null;
+
+      let index = zhong.indexOf(hou[hou.length - 1]);
+      let root = { val: zhong[index] }
+
+      let zhong_leftArr = zhong.slice(0, index);
+      let zhong_rightArr = zhong.slice(index + 1);
+      let hou_leftArr = hou.slice(0, index);
+      let hou_rightArr = hou.slice(index, hou.length - 1)
+      
+      root.left = restore(hou_leftArr, zhong_leftArr);
+      root.right = restore(hou_rightArr, zhong_rightArr)
+      return root;
+
+
+    }
+    var s = restore(hou, zhong);
+    console.log(s);
+  </script>
   </script>
 </body>
 
