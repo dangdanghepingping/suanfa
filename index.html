@@ -6,49 +6,219 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+
+  </style>
 </head>
 
 <body>
-  <script>
-    //快速查找简版
-    var arr = [4, 3, 7, 1, 8, 5, 2, 6, 0, 9]
 
-    // function quickSimple(arr) {
-    //   if(arr.length == 1) return arr;
-    //   if (arr.length == 0 || arr == null) return [];
-    //   let left = [],
-    //     right = [],
-    //   middle = arr[0];
-    //   for (let i = 1; i < arr.length; i++) {
-    //     if (arr[i] > middle) {
-    //       left.push(arr[i])
-    //     } else {
-    //       right.push(arr[i])
+
+  <script>
+
+    // class Tree {
+    //   constructor(val, left = null, right = null) {
+    //     this.val = val;
+    //     this.left = left;
+    //     this.right = right
+    //   }
+    // }
+
+    // var leaf2 = new Tree(4)
+    // var leaf3 = new Tree(5)
+    // var leaf4 = new Tree(6)
+    // var leaf5 = new Tree(7)
+    // var node = new Tree(2, leaf2, leaf3)
+    // var node1 = new Tree(3, leaf4, leaf5);
+    // var root = new Tree(1, node, node1);
+
+    // var leaf1_2 = new Tree(4)
+    // var leaf1_3 = new Tree(5)
+    // var leaf1_4 = new Tree(6)
+    // var leaf1_5 = new Tree(7)
+    // var node1_ = new Tree(2, leaf1_2,leaf1_3)
+    // var node1_1 = new Tree(3333, leaf1_4, leaf1_5);
+    // var root_ = new Tree(1, node1_, node1_1);
+
+
+    // function compaire(node1, node2) {
+    //   debugger
+    //   if(node1 == node2) return true;//要比较到最后是空为止
+    //   //&&运算, 一旦遇到false, 后面的都不管, 直接返回false, 性能好
+    //   if((node1 && !node2)||(!node1 && node2)) return false;
+    //   if(node1.val !== node2.val) return false;
+    //   return compaire(node1.left, node2.left) && compaire(node1.right, node2.right)
+    // }
+
+
+    // function compaire(node1, node2) {//左右互换
+    //   // debugger
+    //   if (node1 == node2) return true;//要比较到最后是空为止
+    //   //&&运算, 一旦遇到false, 后面的都不管, 直接返回false, 性能好
+    //   if ((node1 && !node2) || (!node1 && node2)) return false;
+    //   if (node1.val !== node2.val) return false;
+    //   return (compaire(node1.left, node2.left) && compaire(node1.right, node2.right) ) ||(
+    //     compaire(node1.left, node2.right) && compaire(node1.right, node2.left)
+    //   )
+    // }
+    // console.log(compaire(root, root_));
+
+
+
+
+    // function diff(origin, target, arr = []) {
+    //   //{type:'add',last:null,now:node}
+    //   //{type:'delete',last:node,now:null}
+    //   //{type:'alter',last:node,now:newNode}
+    //   if (origin == null && target == null) return;
+    //   if (origin == null && target !== null) {
+    //     return arr.push({ type: 'add', last: null, now: target })
+    //   }
+    //   if (origin != null && target == null) {
+    //     return arr.push({ type: 'delete', last: origin, now: null })
+    //   }
+    //   if (origin.val !== target.val) {
+    //     arr.push({ type: 'alter', last: origin, now: target })
+    //   }
+    //   diff(origin.left, target.left, arr);
+    //   diff(origin.right, target.right, arr)
+    //   return arr
+    // }
+    // console.log(diff(root, root_));
+
+
+    // 最小树的问题
+    // 普利姆算法(我自己写的)
+    // function Node(mes) {
+    //   this.name = mes.name;
+    //   this.neiborArr = [];
+    // }
+    // var A = new Node({ name: 'A' });
+    // var B = new Node({ name: 'B' });
+    // var C = new Node({ name: 'C' });
+    // var D = new Node({ name: 'D' });
+    // var E = new Node({ name: 'E' });
+
+    // A.neiborArr.push({ neiber: B, price: 4 }, { neiber: E, price: 6 }, { neiber: D, price: 9 }, { neiber: C, price: 5 })
+    // B.neiborArr.push({ neiber: A, price: 4 }, { neiber: C, price: 8 });
+    // C.neiborArr.push({ neiber: A, price: 5 }, { neiber: B, price: 8 }, { neiber: D, price: 3 });
+    // D.neiborArr.push({ neiber: C, price: 3 }, { neiber: A, price: 9 }, { neiber: E, price: 2 });
+    // E.neiborArr.push({ neiber: A, price: 6 }, { neiber: E, price: 2 })
+
+    // function miniPrice(arr,length, result = [{from:arr[0]}]) {
+    //   if (arr.length == length) return
+    //   var tempPrice = 11111;
+    //   var tempNode = null;
+    //   for (var i = 0; i < arr.length; i++) {
+    //     for (var j = 0; j < arr[i].neiborArr.length; j++) {
+    //       if (tempPrice > arr[i].neiborArr[j].price && arr.indexOf(arr[i].neiborArr[j].neiber) == -1) {
+    //         tempPrice = arr[i].neiborArr[j].price;
+    //         tempNode = arr[i].neiborArr[j].neiber;
+    //         tempNodeFrom = arr[i].name
+    //       }
     //     }
     //   }
-    //   return quickSimple(left).concat(middle).concat(quickSimple(right))
+    //   arr.push(tempNode)
+    //   result.push({from:tempNodeFrom,to:tempNode.name,price:tempPrice})
+    //   miniPrice(arr,length,result);
+    //   return result;
+
     // }
-    // 下面的未完成
-    // function exchange(i, j, arr) {
-    //   var temp = arr[i];
-    //   arr[i] = arr[j];
-    //   arr[j] = temp;
-    // }
-    // function quick2(arr, begin, end){
-    //   if(begin >= end) return;
-    //   var left = begin, //因为这个begin后面还得用做标尺,来分数组, 所以得保存流出来
-    //   right = end;
-    //   while(right > left){
-    //    do{arr[left]} while(arr[left] > arr)
+    // console.log(miniPrice([A],5));
+
+    //老师版普利姆算法(利用了二维数组)
+
+    //   var pointArr = ['A', 'B', 'C', 'D', 'E'];
+    //   var max = 10000;
+    //   var priceArr = [
+    //     [max, 4, 5, 9, 6],
+    //     [4, max, 8, max, max],
+    //     [5, 8, max, 3, max],
+    //     [9, max, 3, max, 2],
+    //     [6, max, max, 2, max]
+    //   ];
+
+    //   function Node(mes) {
+    //     this.name = mes.name;
+    //   }
+    //   var A = new Node({ name: 'A' });
+    //   var B = new Node({ name: 'B' });
+    //   var C = new Node({ name: 'C' });
+    //   var D = new Node({ name: 'D' });
+    //   var E = new Node({ name: 'E' });
+    //   var nodeArr = [A, B, C, D, E]
+
+    //   function minPrice(nodeArr, priceArr, checkedArr, result = [checkedArr[0]]) {
+    //     if(checkedArr.length >= nodeArr.length) return
+    //     var price = max;
+    //     var toNode = null;
+    //     for (var i = 0; i < checkedArr.length; i++) {
+    //       var index = nodeArr.indexOf(checkedArr[i]);
+    //       for (var j = 0; j < priceArr[index].length; j++) {
+    //         if (price > priceArr[index][j] && checkedArr.indexOf(nodeArr[j]) == -1) {
+    //           toNode = nodeArr[j];
+    //           price = priceArr[index][j]
+    //         }
+    //       }
+    //     }
+    //     checkedArr.push(toNode)
+    //     result.push({ toNode, price });
+    //     minPrice(nodeArr, priceArr, checkedArr, result)
+    //     return result
+
     //   }
 
-    // }
-    // function quick(arr) {
+    //  console.log(minPrice(nodeArr, priceArr, [A])); 
 
 
 
-    // }
-    // console.log(quick(arr)); 
+    //克鲁斯卡尔算法(加边法)
+//     var pointArr = ['A', 'B', 'C', 'D', 'E'];
+//     var max = 10000;
+//     var priceArr = [
+//       [max, 4, 5, 9, 6],
+//       [4, max, 8, max, max],
+//       [5, 8, max, 3, max],
+//       [9, max, 3, max, 2],
+//       [6, max, max, 2, max]
+//     ];
+
+//     function Node(mes) {
+//       this.name = mes.name;
+//     }
+//     var A = new Node({ name: 'A' });
+//     var B = new Node({ name: 'B' });
+//     var C = new Node({ name: 'C' });
+//     var D = new Node({ name: 'D' });
+//     var E = new Node({ name: 'E' });
+//     var nodeArr = [A, B, C, D, E]
+// //分部落来看 这个没写完
+// function inCheckedArr(node,checkedArr){
+//   for(var i = 0; i < checkedArr.length; i++){
+    
+
+//   }
+// }
+//     function minPrice(nodeArr,priceArr,checkedArr,result){
+//       var tempPrice = max;
+//       for(var i = 0; i < priceArr.length; i++){
+//         for(var j = 0; j < priceArr[i].length; j++){
+//           if(tempPrice > priceArr[i][j] && 
+//           checkedArr.indexOf(priceArr[i]) == -1 || checkedArr.indexOf(priceArr[j] == -1 || 
+//           ))
+
+//         }
+        
+
+//       }
+
+//     }
+
+
+
+
+
+
   </script>
 </body>
 
